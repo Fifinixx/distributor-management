@@ -205,7 +205,7 @@ export default function AppSidebar({ children, email }) {
                   side="right"
                   className="w-[--radix-popper-anchor-width]"
                 >
-                  <DropdownMenuItem className="cursor-pointer" onClick={async() => awit handleSignOut()}>
+                  <DropdownMenuItem className="cursor-pointer" onClick={async() => await handleSignOut()}>
                     <span>Sign out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
