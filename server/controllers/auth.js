@@ -45,7 +45,7 @@ async function Signout(req, res, next){
     res.clearCookie("token", {
       httpOnly:true,
       secure:true,
-      sameSite:"strict"
+      sameSite:"none"
     });
     return res.json({message:"Signout successful!"})
   }catch(e){
