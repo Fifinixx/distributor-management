@@ -42,16 +42,12 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://distributor-management.onrender.com"], // React dev server
+    origin: "https://distributor-management.onrender.com", 
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: [
-      "Access-Control-Allow-Headers",
-      "Content-Type",
-      "Authorization",
-    ],
-    credentials: true, // if using cookies/session
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
-);
+)
 app.use(express.json());
 
 app.get("/api/auth/me", isValidJwt, (req, res) => {
