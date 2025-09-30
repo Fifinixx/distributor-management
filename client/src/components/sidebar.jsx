@@ -124,7 +124,7 @@ export default function AppSidebar({ children, email }) {
       });
       if (res.ok) {
         refreshAuth();
-        navigate("/", {replace:true});
+        <Navigate to="/"/>;
       }
     } catch (e) {
       console.log(e);
@@ -205,7 +205,7 @@ export default function AppSidebar({ children, email }) {
                   side="right"
                   className="w-[--radix-popper-anchor-width]"
                 >
-                  <DropdownMenuItem className="cursor-pointer" onClick={handleSignOut}>
+                  <DropdownMenuItem className="cursor-pointer" onClick={async() => awit handleSignOut()}>
                     <span>Sign out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
