@@ -42,7 +42,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:5173"], // React dev server
+    origin: ["https://distributor-management.onrender.com"], // React dev server
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: [
       "Access-Control-Allow-Headers",
