@@ -31,7 +31,7 @@ async function Login(req, res, next) {
     res.cookie("token", token, {
       httpOnly: true, // cannot access via JS
       secure: true, // send only over HTTPS
-      sameSite: "strict", // helps prevent CSRF
+      sameSite: "none", // helps prevent CSRF
       maxAge: 3600000, // 1 hour
     });
     return res.status(200).json({ email: req.body.email, name:existingUser.name }); // no need to send token in JSON
