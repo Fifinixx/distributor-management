@@ -266,7 +266,7 @@ export default function TableResponsive() {
                       {order.id}
                     </TableCell>
                     <TableCell>{capitalize(order.supplier_id.name)}</TableCell>
-                    <TableCell>{formatDate(order.createdAt)}</TableCell>
+                    <TableCell className="whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">{formatDate(order.createdAt)}</TableCell>
                     <TableCell>
                       {order.due.$numberDecimal > 0 ? (
                         <span className="text-red-800">
