@@ -24,7 +24,7 @@ export default function Dashboard({ children }) {
       <div className="flex justify-center items-center min-h-screen">
         <SidebarProvider>
           <AppSidebar />
-          <div className="p-2 flex flex-col flex-1">
+          <div className="w-full p-2 flex flex-col flex-1">
             <div className="flex items-center justify-between">
               <SidebarTrigger />
               <ToggleTheme />
