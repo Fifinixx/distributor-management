@@ -24,9 +24,9 @@ import { Navigate } from "react-router";
 export default function Users() {
   const {role} = useAppContext();
   const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
-//   if(role !== "admin"){
-//     return <Navigate  to="/dashboard/404"/>
-//   }
+  if(role !== "admin"){
+    return <Navigate  to="/dashboard/404"/>
+  }
   const [loading, setLoading] = useState({ users: true, addUser: false });
   const [users, setUsers] = useState([]);
   const [credentials, setCredentials] = useState({
@@ -112,7 +112,7 @@ export default function Users() {
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
+                {/* <Label htmlFor="name">Name</Label> */}
                 <Input
                   value={credentials.name}
                   id="name"
