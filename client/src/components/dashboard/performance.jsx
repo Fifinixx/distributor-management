@@ -62,124 +62,60 @@ export default function Performance() {
     performance?.sales?.[0]?.totalSales?.$numberDecimal ?? 0
   );
   const netProfit = totalSales - totalPurchases + totalDamageDiscount;
-    return (
-    <div className="container flex flex-col  justify-around items-start sm:flex-row">
-      <Card className="w-full sm:w-1/2">
-        <CardHeader>
-          <CardTitle>Create a new User</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  value={credentials.name}
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  onChange={(e) =>
-                    setCredentials((prev) => ({
-                      ...prev,
-                      name: e.target.value,
-                    }))
-                  }
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  value={credentials.email}
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  onChange={(e) =>
-                    setCredentials((prev) => ({
-                      ...prev,
-                      email: e.target.value,
-                    }))
-                  }
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                </div>
-                <Input
-                  onChange={(e) =>
-                    setCredentials((prev) => ({
-                      ...prev,
-                      password: e.target.value,
-                    }))
-                  }
-                  value={credentials.password}
-                  id="password"
-                  type="password"
-                  required
-                />
-              </div>
-              <RadioGroup
-                onValueChange={(value) => {
-                  setCredentials((prev) => ({ ...prev, role: value }));
-                }}
-                className="flex justify-center items-center"
-                value={credentials.role}
-              >
-                <div className="flex items-center gap-3">
-                  <RadioGroupItem value="admin" id="admin" />
-                  <Label htmlFor="admin">Admin</Label>
-                </div>
-                <div className="flex items-center gap-3">
-                  <RadioGroupItem value="read" id="read" />
-                  <Label htmlFor="read">Read</Label>
-                </div>
-                <div className="flex items-center gap-3">
-                  <RadioGroupItem value="read/write" id="read/write" />
-                  <Label htmlFor="admin">Read/Write</Label>
-                </div>
-              </RadioGroup>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex-col gap-2">
-          <Button
-            disabled={loading.addUser}
-            onClick={handleSignup}
-            type="button"
-            className="w-full"
-          >
-            {loading.addUser ? <Spinner /> : "Create"}
-          </Button>
-        </CardFooter>
-      </Card>
-      {users.length == 0 ? (
-        <div className="w-1/2  p-2">
-          <p>No users found</p>
+      return (
+    <>
+      {loading ? (
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[100px] w-full rounded-xl" />
+          <div className="space-y-2 w-full">
+            <Skeleton className="h-4 " />
+            <Skeleton className="h-4 " />
+            <Skeleton className="h-4 " />
+          </div>
         </div>
       ) : (
-        <div className="w-full flex flex-col p-2 items-center justify-center gap-2 sm:w-1/2">
-          <p className="text-center">Existing users</p>
-          {users.map((user) => {
-            return (
-              <Card className="w-full p-1" key={user._id}>
-                <CardContent className="text-xs w-full flex justify-between p-1 items-center">
-                  <p >{user.name}</p>
-                  <p >{user.role}</p>
-                  <p >{user.email}</p>
-                  <p >{formatDate(user.createdAt)}</p>
-                  <p > <Trash2 /></p>
-                 
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>THIS MONTH</CardTitle>
+            <CardDescription>Profit and Loss</CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm flex flex-col justify-center gap-3">
+            <div className="flex justify-between gap-4 items-center">
+              <p>Total Purchases made this month</p>
+              <p className="text-red-500">{formatCurrency(totalPurchases)}</p>
+            </div>
+            <div className="flex justify-between  gap-4 items-center">
+              <p>Total Sales made this month</p>
+              <p className="text-green-500">{formatCurrency(totalSales)}</p>
+            </div>
+            <div className="flex justify-between  gap-4 items-center">
+              <p>Damaged goods</p>
+              <p className="text-red-500"> - {formatCurrency(0)}</p>
+            </div>
+            <div className="flex justify-between  gap-4 items-center">
+              <p>Damage Discount</p>
+              <p className="text-green-500">
+                + {formatCurrency(totalDamageDiscount)}
+              </p>
+            </div>
+            <div className="flex justify-between  gap-4 items-center">
+              <p>Net Profit</p>
+              <p
+                className={`${
+                  netProfit > 0 ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {formatCurrency(netProfit)}
+              </p>
+            </div>
+            <CardFooter className="w-full p-0">
+              <Link className="w-full" to="/dashboard/reports">
+                <Button className="cursor-pointer w-full">REPORTS</Button>
+              </Link>
+            </CardFooter>
+          </CardContent>
+        </Card>
       )}
-    </div>
+    </>
   );
 }
