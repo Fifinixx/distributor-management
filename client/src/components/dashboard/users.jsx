@@ -205,9 +205,9 @@ export default function Users() {
             return (
               <Card className="w-full p-1" key={user._id}>
                 <CardContent className="text-xs w-full flex justify-between p-1 items-center">
-                  <p >{user.name}</p>
+                  <p className="whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">{user.name}</p>
                   <p >{user.role}</p>
-                  <p >{user.email}</p>
+                  <p className="whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">{user.email}</p>
                   <p >{formatDate(user.createdAt)}</p>
                   <p > <Trash2 /></p>
                  
