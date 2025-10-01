@@ -30,12 +30,16 @@ export default function Performance() {
         setLoading(false);
         const data = await res.json();
         const currentMonthIndex = new Date().getMonth() + 1;
+        const currentYear = new Date().getFullYear();
+
         const filteredData = {
           purchases: data.purchases.filter(
-            (item) => item._id.month === currentMonthIndex
+            (item) => item._id.month === currentMonthIndex && item._id.year === currentYear
+
           ),
           sales: data.sales.filter(
-            (item) => item._id.month === currentMonthIndex
+          (item) => item._id.month === currentMonthIndex && item._id.year === currentYear
+
           ),
         };
         setPerformance(filteredData);
