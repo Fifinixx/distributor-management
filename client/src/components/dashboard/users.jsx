@@ -99,9 +99,9 @@ export default function Users() {
   useEffect(() => {
     fetchUsers();
   }, []);
-  return (
-    <div className="container flex justify-around items-start">
-      <Card className="w-1/2">
+    return (
+    <div className="container flex flex-col  justify-around items-start sm:flex-row">
+      <Card className="w-full sm:w-1/2">
         <CardHeader>
           <CardTitle>Create a new User</CardTitle>
           <CardDescription>
@@ -112,7 +112,7 @@ export default function Users() {
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                {/* <Label htmlFor="name">Name</Label> */}
+                <Label htmlFor="name">Name</Label>
                 <Input
                   value={credentials.name}
                   id="name"
@@ -199,7 +199,7 @@ export default function Users() {
           <p>No users found</p>
         </div>
       ) : (
-        <div className="w-1/2 flex flex-col p-2 items-center justify-center gap-2">
+        <div className="w-full flex flex-col p-2 items-center justify-center gap-2 sm:w-1/2">
           <p className="text-center">Existing users</p>
           {users.map((user) => {
             return (
