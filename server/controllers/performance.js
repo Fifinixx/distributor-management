@@ -10,11 +10,11 @@ async function FetchPerformance(req, res, next) {
         {
           $group: {
             _id: {
-              year: { $year: "$createdAt" },
-              month: { $month: "$createdAt" }
+                 year: { $year: { date: "$createdAt", timezone: "Asia/Kolkata" } },
+      month: { $month: { date: "$createdAt", timezone: "Asia/Kolkata" } }
             },
-            totalPurchases: { $sum: "$grandTotal" },
-            totalDamageDiscount : {$sum: "$discountAmount"}
+              year: { $year: { date: "$createdAt", timezone: "Asia/Kolkata" } },
+      month: { $month: { date: "$createdAt", timezone: "Asia/Kolkata" } }
           }
         },
         { $sort: { "_id.year": 1, "_id.month": 1 } }
