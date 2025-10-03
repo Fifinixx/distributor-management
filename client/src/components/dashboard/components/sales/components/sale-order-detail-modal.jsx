@@ -94,7 +94,7 @@ export default function SaleOrderDetailModal({
           );
         }}
       >
-        <DialogContent className="sm:max-w-[800px]">
+        <DialogContent className="pl-0 text-xl  pr-0 overflow-auto  sm:max-w-[800px]">
           <DialogHeader>
             <DialogTitle className="flex w-full gap-2">
               <div className=" w-full flex flex-col justify-center items-center gap-4 sm:flex-row sm:items-center sm:justify-start">
@@ -113,7 +113,7 @@ export default function SaleOrderDetailModal({
               <TableCaption>A list of products in your order.</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[100px]">NAME</TableHead>
+                  <TableHead className="text-left ">NAME</TableHead>
                   <TableHead className="text-center">BUY</TableHead>
                   <TableHead className="text-center">SALE</TableHead>
                   <TableHead className="text-center">DISC</TableHead>
