@@ -91,7 +91,7 @@ export default function OrderDetailModal({
         <FaEye />
       </Button>
       <Dialog
-        className="container"
+      className="p-0 m-0"
         open={openModal}
         onOpenChange={(isOpen) => {
           setOpenModals((prev) =>
@@ -101,7 +101,7 @@ export default function OrderDetailModal({
           );
         }}
       >
-        <DialogContent className="sm:max-w-[800px]">
+        <DialogContent className="pl-0 pr-0 w-[100vw] sm:max-w-[800px]">
           <DialogHeader>
             <DialogTitle>
               ORDER DETAILS: <span className="text-blue-600">{order.id}</span>
@@ -126,21 +126,21 @@ export default function OrderDetailModal({
               <TableBody>
                 {order.products.map((product) => (
                   <TableRow key={product._id}>
-                    <TableCell className="font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
+                    <TableCell className="text-left font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
                       {product.product_id.name}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
                       {product.basePrice.$numberDecimal}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
                       {formatCurrency(product.gstAmount.$numberDecimal)}
                       {` (${product.gstPercent}%)`}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
                       {formatCurrency(Number(product.price.$numberDecimal).toFixed(2))}
                     </TableCell>
-                    <TableCell className="text-center">{product.qty}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-center font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">{product.qty}</TableCell>
+                    <TableCell className="text-right font-medium whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">
                       {formatCurrency(
                         (Number(product.basePrice.$numberDecimal) + Number(product.gstAmount.$numberDecimal)) * product.qty
                       )}
