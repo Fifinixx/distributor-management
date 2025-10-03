@@ -283,7 +283,7 @@ export default function SaleOrderHistory() {
                         {order.shop_id.name.charAt(0).toUpperCase() +
                           order.shop_id.name.slice(1)}
                       </TableCell>
-                      <TableCell>{formatDate(order.createdAt)}</TableCell>
+                      <TableCell className="whitespace-normal break-words max-w-[100px] sm:max-w-[250px]">{formatDate(order.createdAt)}</TableCell>
                       <TableCell>
                       <span className={`${order.due.$numberDecimal > 0 ? "text-green-700" : "text-red-700"}`}>
                             {formatCurrency(Number(order.due.$numberDecimal))}
