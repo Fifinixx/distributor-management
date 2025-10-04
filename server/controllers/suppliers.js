@@ -117,7 +117,7 @@ async function DeleteSuppliers(req, res, next) {
     await session.endSession();
     return res.status(200).json({
       message: `Succesfully deleted ${Delete.deletedCount} ${
-        Delete.deletedCount > 1 ? "orders." : "order."
+        Delete.deletedCount > 1 ? "suppliers." : "supplier."
       }`,
     });
   } catch (e) {
