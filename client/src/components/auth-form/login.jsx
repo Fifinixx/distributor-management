@@ -1,14 +1,29 @@
+import { useState } from "react";
+
+import Particles from "./particles";
+
+import { Button } from "@/components/ui/button";
+import { Spinner } from "../ui/shadcn-io/spinner";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 export default function Login({ handleLogin, credentials, setCredentials }) {
   const [loading, setLoading] = useState(false);
-
- 
-  const onSubmit = async (e) => {
+  async function onSubmit(e){
     e.preventDefault(); 
     setLoading(true);
     await handleLogin();
     setLoading(false);
-  };
-
+  }
   return (
     <>
       <div className="relative w-full h-full">
@@ -25,7 +40,6 @@ export default function Login({ handleLogin, credentials, setCredentials }) {
           />
         </div>
       </div>
-
       <Card className="w-full max-w-sm absolute">
         <h1 className="text-center">MAA TARA TRADERS</h1>
         <CardHeader>
@@ -34,10 +48,8 @@ export default function Login({ handleLogin, credentials, setCredentials }) {
             Enter your email below to login to your account
           </CardDescription>
         </CardHeader>
-
+        <form onSubmit={e => onSubmit(e)}>
         <CardContent>
-          {/* ✅ Added onSubmit here */}
-          <form onSubmit={onSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -48,45 +60,42 @@ export default function Login({ handleLogin, credentials, setCredentials }) {
                   required
                   value={credentials.email}
                   onChange={(e) =>
-                    setCredentials((prev) => ({
-                      ...prev,
-                      email: e.target.value,
-                    }))
+                    setCredentials((prev) => {
+                      return { ...prev, email: e.target.value };
+                    })
                   }
                 />
               </div>
-
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                 </div>
                 <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
                   value={credentials.password}
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
                   onChange={(e) =>
-                    setCredentials((prev) => ({
-                      ...prev,
-                      password: e.target.value,
-                    }))
+                    setCredentials((prev) => {
+                      return { ...prev, password: e.target.value };
+                    })
                   }
                 />
               </div>
             </div>
-
-            <CardFooter className="flex-col gap-2 mt-4">
-              <Button
-                disabled={loading}
-                type="submit"
-                className="w-full"
-              >
-                {loading ? <Spinner /> : "Login"}
-              </Button>
-            </CardFooter>
-          </form>
+         
         </CardContent>
+        <CardFooter className="flex-col gap-2">
+          <Button
+          disabled={loading}
+            type="submit"
+            className="w-full mt-4"
+          >
+            {loading ? <Spinner /> : "Login"}
+          </Button>
+        </CardFooter>
+        </form>
       </Card>
     </>
   );
