@@ -32,8 +32,12 @@ This document outlines how accessibility principles were applied in the **Distri
 ---
 
 **Tools & Frameworks:**
+- React
 - React Router
 - Tailwind CSS
 - ShadCN UI (Radix primitives for accessible components)
+- NodeJS
 - ExpressJS
+- Mongoose
+- MongoDB
 
